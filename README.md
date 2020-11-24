@@ -13,6 +13,6 @@ chmod +x update.sh
 
 ## Create SERVER STACK
 
-```./create.sh ServerStack servers.yml server_parameters.json```
+```./create.sh ServerStack servers.yml server-parameters.json```
 
-```./update.sh ServerStack servers.yml server_parameters.json```
+```./update.sh ServerStack servers.yml server-parameters.json```
