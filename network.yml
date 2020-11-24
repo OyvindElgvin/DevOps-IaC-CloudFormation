@@ -52,12 +52,14 @@ Resources:
                             -   sts:AssumeRole
             ManagedPolicyArns:
                 - "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
+
     InstanceProfileWithRoles:
         Type: AWS::IAM::InstanceProfile
         Properties:
             Path: "/"
             Roles:
                 - Ref: UdacityS3ReadOnlyEC2Role
+                
     myRolePolicies:
         Type: AWS::IAM::Policy
         Properties:
