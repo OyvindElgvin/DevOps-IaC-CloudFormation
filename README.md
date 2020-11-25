@@ -1,18 +1,38 @@
-# Launch stack
+# This project deploys a highly available web app using CloudFormation
 
-## Give execute permission to files (needed only first time)
+## Launch stack
 
-chmod +x create.sh
+### Give execute permission to files (only needed first time)
+
+```
+chmod +x create.sh  
 chmod +x update.sh
+chmod +x delete.sh
+```
 
-## Create NETWORK
+### Create Network
 
-```./create.sh NetworkIaC network.yml network-parameters.json```
+```
+./create.sh NetworkIaC network.yml network-parameters.json
+```
 
-```./update.sh NetworkIaC network.yml network-parameters.json```
+```
+./update.sh NetworkIaC network.yml network-parameters.json
+```
 
-## Create SERVER STACK
+### Create Servers
 
-```./create.sh ServerStack servers.yml server-parameters.json```
+```
+./create.sh ServerStack servers.yml server-parameters.json
+```
 
-```./update.sh ServerStack servers.yml server-parameters.json```
+```
+./update.sh ServerStack servers.yml server-parameters.json
+```
+
+### Delete Servers and Networks
+
+```
+./delete.sh ServerStack
+./delete.sh NetworkIaC
+```
