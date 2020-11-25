@@ -48,10 +48,53 @@ Resources:
                 FromPort: 0
                 ToPort: 65535
                 CidrIp: 0.0.0.0/0
+    
+    UdacityS3FullAccessEC2Role:
+        Type: AWS::IAM::Role
+        Properties:
+            AssumeRolePolicyDocument:
+                Statement:
+                    -   Effect: Allow
+                        Principal:
+                            Service:
+                                -   ec2.amazonaws.com
+                        Action:
+                            -   sts:AssumeRole
+            Policies:
+                -   PolicyName: S3ReadPolicy
+                    PolicyDocument:
+                        Statement:
+                            -   Effect: Allow
+                                Action: "*" 
+                                Resource: "*"
+            # ManagedPolicyArns:
+            #     - "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+                
+    # myRolePolicies:
+    #     Type: AWS::IAM::Policy
+    #     Properties:
+    #         PolicyName: S3ReadPolicy
+    #         PolicyDocument:
+    #             Statement:
+    #                 -   Effect: Allow
+    #                     Action: "*" 
+    #                     Resource: "*"
+    #         Roles:
+    #             - Ref: UdacityS3FullAccessEC2Role
+
+    InstanceProfileWithRoles:
+        Type: AWS::IAM::InstanceProfile
+        Properties:
+            Path: "/"
+            Roles:
+                - Ref: "UdacityS3FullAccessEC2Role"
 
     WebAppLaunchConfig:
         Type: AWS::AutoScaling::LaunchConfiguration
         Properties:
+            ImageId: ami-0ac73f33a1888c64a
+            InstanceType: t2.micro
+            IamInstanceProfile: !Ref InstanceProfileWithRoles
             UserData:
                 Fn::Base64: !Sub |
                     #!/bin/bash
@@ -62,17 +105,13 @@ Resources:
                     cd /var/www/html
                     aws s3 cp s3://udacity-demo-1/udacity.zip .
                     unzip -o udacity.zip
-            ImageId: ami-07dd19a7900a1f049    # denne er ny
             KeyName: ServerKey
             SecurityGroups:
             -   Ref: WebServerSecGroup
-            InstanceType: t2.micro
             BlockDeviceMappings:
             -   DeviceName: "/dev/sdk"
                 Ebs:
                     VolumeSize: '10'
-            # IamInstanceProfile:             # Denne er ny
-            # -   Ref: InstanceProfileWithRoles
 
     WebAppGroup:
         Type: AWS::AutoScaling::AutoScalingGroup
@@ -82,7 +121,7 @@ Resources:
                     !Sub "${EnvironmentName}-PRIV-NETS"
             LaunchConfigurationName:
                 Ref: WebAppLaunchConfig
-            MinSize: '4'
+            MinSize: '1'
             MaxSize: '5'
             TargetGroupARNs:
             -   Ref: WebAppTargetGroup
@@ -134,3 +173,8 @@ Resources:
             VpcId: 
                 Fn::ImportValue:
                     Fn::Sub: "${EnvironmentName}-VPCID"
+
+Outputs:
+    EndpointURL:
+        Description: The public url to the applications load balancer
+        Value: !Join ["", ["http://", !GetAtt WebAppLB.DNSName]]

@@ -1,6 +1,6 @@
 # Launch stack
 
-## Give execute permission to file
+## Give execute permission to files (needed only first time)
 
 chmod +x create.sh
 chmod +x update.sh
