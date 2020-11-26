@@ -2,6 +2,10 @@
 
 For this project, the goal is to use Infrastructure as Code, or IaC, to deploy a highly available web application through AWS CloudFormation. The IaC process uses definition files to manage and provision data centers, rather than interactive configuration tools and can therefore deploy data centers reliably in an automatic fashion.
 
+The network stack consists of a VPC, with a pair of public and private subnets spread across two Availability Zones. It deploys an Internet Gateway with a default route on the public subnets. It deploys a pair of NAT Gateways (one in each AZ), and default routes for them in the private subnets.
+
+This template creates an autoscaling group, a load balancer, the required security groups, an IAM role with an s3read policy, and EC2 instances.
+
 The server stack spin up EC2 instances ready-made with Ubuntu installed and uses the commands below to install awscli and apache2. After the installation of the dependencies, a zip file containing the HTML is copied from a Udacity managed s3 bucket and into the EC2 instances to deploy the web application.
 
 ```bash
