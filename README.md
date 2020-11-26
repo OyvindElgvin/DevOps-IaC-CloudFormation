@@ -21,6 +21,8 @@ As seen in the diagram below the server stack consists of an autoscaling group i
 
 ## Web application test example
 
+A link to the dummy web application provided by Udacity can be found in the outputs of the server stack. One example of such a link is provided here.
+
 [http://serve-webap-1s7p4pezt4zbh-258404552.us-west-2.elb.amazonaws.com](http://serve-webap-1s7p4pezt4zbh-258404552.us-west-2.elb.amazonaws.com)
 
 ## Launch stack
