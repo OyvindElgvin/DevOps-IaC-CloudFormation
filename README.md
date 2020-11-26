@@ -19,9 +19,13 @@ As seen in the diagram below the server stack consists of an autoscaling group i
 
 ![diagram](Diagram.png)
 
+## Web application test example
+
+[http://serve-webap-1s7p4pezt4zbh-258404552.us-west-2.elb.amazonaws.com](http://serve-webap-1s7p4pezt4zbh-258404552.us-west-2.elb.amazonaws.com)
+
 ## Launch stack
 
-To launch the stack you need to run the ```create.sh``` bash file containing CloudFormation commands, and provide suitable arguments matching the positional arguments.
+To launch the stack you need to run the ```create.sh``` bash file containing CloudFormation commands, and provide the correct number of suitable arguments matching the positional arguments.
 
 ### Give execute permission to files (only needed the first time)
 
@@ -57,7 +61,3 @@ chmod +x delete.sh
 ./delete.sh ServerStack
 ./delete.sh NetworkIaC
 ```
-
-### Web application test example
-
-[http://serve-webap-1s7p4pezt4zbh-258404552.us-west-2.elb.amazonaws.com](http://serve-webap-1s7p4pezt4zbh-258404552.us-west-2.elb.amazonaws.com)
