@@ -39,3 +39,7 @@ chmod +x delete.sh
 ./delete.sh ServerStack
 ./delete.sh NetworkIaC
 ```
+
+### WebPage example
+
+[http://serve-webap-1s7p4pezt4zbh-258404552.us-west-2.elb.amazonaws.com](http://serve-webap-1s7p4pezt4zbh-258404552.us-west-2.elb.amazonaws.com)
