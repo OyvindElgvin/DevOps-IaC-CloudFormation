@@ -1,5 +1,8 @@
 # This project deploys a highly available web app using CloudFormation
 
+
+
+
 ## Launch stack
 
 ### Give execute permission to files (only needed first time)

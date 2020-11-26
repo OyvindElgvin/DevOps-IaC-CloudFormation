@@ -2,5 +2,23 @@
     {
         "ParameterKey": "EnvironmentName",
         "ParameterValue": "UdacityProjecCloudFormation"
+    },
+
+    {
+        "ParameterKey": "TypeOfEC2Instance",
+        "ParameterValue": "t3.small"
+    },
+
+    {
+        "ParameterKey": "MinimumInstances",
+        "ParameterValue": "4"
+    },
+
+    {
+        "ParameterKey": "MaximumInstances",
+        "ParameterValue": "8"
     }
+
 ]
+
+

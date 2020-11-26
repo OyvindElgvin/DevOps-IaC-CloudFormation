@@ -7,6 +7,18 @@ Parameters:
     EnvironmentName:
         Description: Single Parameter that we are passing with the env name.
         Type: String
+    
+    TypeOfEC2Instance:
+        Description: Specify the type of EC2 instance
+        Type: String
+
+    MinimumInstances:
+        Description: Specify the minimum number of EC2 instances
+        Type: String
+
+    MaximumInstances:
+        Description: Specify the maximun number of EC2 instances
+        Type: String
 
 Resources:
     LBSecGroup:
@@ -79,7 +91,7 @@ Resources:
         Type: AWS::AutoScaling::LaunchConfiguration
         Properties:
             ImageId: ami-07dd19a7900a1f049
-            InstanceType: t3.small
+            InstanceType: !Ref TypeOfEC2Instance
             IamInstanceProfile: !Ref InstanceProfileWithRoles
             UserData:
                 Fn::Base64: !Sub |
@@ -107,8 +119,8 @@ Resources:
                     !Sub "${EnvironmentName}-PRIV-NETS"
             LaunchConfigurationName:
                 Ref: WebAppLaunchConfig
-            MinSize: '4'
-            MaxSize: '5'
+            MinSize: !Ref MinimumInstances
+            MaxSize: !Ref MaximumInstances
             TargetGroupARNs:
             -   Ref: WebAppTargetGroup
 
