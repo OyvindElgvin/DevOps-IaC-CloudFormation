@@ -1,12 +1,15 @@
 # This project deploys a highly available web app using CloudFormation
 
-Here is a diagram of the network created to set up the webpage.
+For this project, the goal is to use Infrastructure as Code, or IaC, to deploy a highly available web app through AWS CloudFormation. The IaC process uses definition files to manage and provision data centers, rather than interactive configuration tools and can therefore deploy data centers reliably in an automatic fashion.
 
+The server stack consists of an autoscaling group providing minimum 4 EC2 instances 
+
+Below is a diagram of the network used to set up the web app.
 ![diagram](Diagram.png)
 
 ## Launch stack
 
-### Give execute permission to files (only needed first time)
+### Give execute permission to files (only needed the first time)
 
 ```bash
 chmod +x create.sh  
