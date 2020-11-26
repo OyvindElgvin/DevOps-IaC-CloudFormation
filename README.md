@@ -2,7 +2,7 @@
 
 For this project, the goal is to use Infrastructure as Code, or IaC, to deploy a highly available web app through AWS CloudFormation. The IaC process uses definition files to manage and provision data centers, rather than interactive configuration tools and can therefore deploy data centers reliably in an automatic fashion.
 
-As seen in the diagram below the server stack consists of an autoscaling group in private subnets providing minimum tow EC2 instances in two different Availability Zones to ensure high availability for the web app.
+As seen in the diagram below the server stack consists of an autoscaling group in private subnets providing minimum two EC2 instances in two different Availability Zones to ensure high availability for the web app.
 
 ![diagram](Diagram.png)
 
@@ -16,7 +16,7 @@ chmod +x update.sh
 chmod +x delete.sh
 ```
 
-### Create Network
+### Create and Update Network
 
 ```bash
 ./create.sh NetworkIaC network.yml network-parameters.json
@@ -26,7 +26,7 @@ chmod +x delete.sh
 ./update.sh NetworkIaC network.yml network-parameters.json
 ```
 
-### Create Servers
+### Create and Update Servers
 
 ```bash
 ./create.sh ServerStack servers.yml server-parameters.json
