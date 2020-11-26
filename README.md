@@ -21,6 +21,8 @@ As seen in the diagram below the server stack consists of an autoscaling group i
 
 ## Launch stack
 
+To launch the stack you need to run the ```create.sh``` bash file containing CloudFormation commands, and provide suitable arguments matching the positional arguments.
+
 ### Give execute permission to files (only needed the first time)
 
 ```bash
