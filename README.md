@@ -1,4 +1,4 @@
-# This project deploys a highly available web application using CloudFormation
+# Deploying a highly available web application using CloudFormation
 
 For this project, the goal is to use Infrastructure as Code, or IaC, to deploy a highly available web application through AWS CloudFormation. The IaC process uses definition files to manage and provision data centers, rather than interactive configuration tools and can therefore deploy data centers reliably in an automatic fashion.
 
