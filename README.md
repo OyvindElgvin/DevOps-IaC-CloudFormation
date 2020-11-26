@@ -39,7 +39,7 @@ A link to the dummy web application provided by Udacity can be found in the outp
 
 ## Launch stack
 
-To launch the stack you need to run the ```create.sh``` bash file containing CloudFormation commands, and provide the correct number of suitable arguments matching the positional arguments.
+To launch the stack you need to run the ```create.sh``` file containing CloudFormation commands, and provide the correct number of suitable arguments matching the positional arguments.
 
 ### Give execute permission to files (only needed the first time)
 
